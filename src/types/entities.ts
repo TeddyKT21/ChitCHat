@@ -3,8 +3,7 @@ export interface User{
     name:string;
     password:string;
     contacts:User[];
-    chats:Chat[]
-
+    chats:Chat[];
 }
 
 export interface Chat{ 
@@ -18,7 +17,6 @@ export type Content = string
 
 export interface Message{
     author:User;
-    chat:Chat;
     createdAt:Date;
     content:Content;
 }

@@ -23,7 +23,9 @@ connectToMongo()
     console.log(`server is listening on port ${PORT}`);
   });
 })
-.catch(() => {
+.catch((error) => {
+  console.log(error);
+  
     server.listen(PORT, () => {
       console.log(`server is listening on port ${PORT} without database !`);
     });

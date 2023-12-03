@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getLoginUser } from "../DAL/users.js";
-import * as BLAuth from "../BL/auth.js";
+import {login as loginBL, signUp as signUpBL} from "../BL/auth.js";
 
 export const login = async (
   req: Request,
@@ -9,7 +8,7 @@ export const login = async (
 ) => {
   const { email, password } = req.body;
   try {
-    const user = await BLAuth.login(email, password);
+    const user = await loginBL(email, password);
     res.send(user);
   } catch (error) {
     next(error);
@@ -23,7 +22,7 @@ export const signUp = async (
 ) => {
   const { user, confirmPassword } = req.body;
   try {
-    const newUser = await BLAuth.signUp(user, confirmPassword);
+    const newUser = await signUpBL(user, confirmPassword);
     res.send(newUser);
   } catch (error) {
     next(error);
